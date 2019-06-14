@@ -1,7 +1,6 @@
 defmodule BankAPI.Accounts do
   import Ecto.Query, warn: false
 
-  alias Ecto.Changeset
   alias BankAPI.{Repo, Router}
   alias BankAPI.Accounts.Commands.OpenAccount
   alias BankAPI.Accounts.Projections.Account
