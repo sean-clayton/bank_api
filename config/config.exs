@@ -14,7 +14,8 @@ config :bank_api,
 # Configures the endpoint
 config :bank_api, BankAPIWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "E+2a4usZ2q4nDHPyCBKCFL01HrEd6myR9XY+o3Q8gylKsIBeIpQMi6GRGhdAUEm2",
+  secret_key_base:
+    "E+2a4usZ2q4nDHPyCBKCFL01HrEd6myR9XY+o3Q8gylKsIBeIpQMi6GRGhdAUEm2",
   render_errors: [view: BankAPIWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: BankAPI.PubSub, adapter: Phoenix.PubSub.PG2]
 
@@ -27,6 +28,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :commanded,
+  default_consistency: :strong,
   event_store_adapter: Commanded.EventStore.Adapters.EventStore
 
 config :commanded_ecto_projections,
