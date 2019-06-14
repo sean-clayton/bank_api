@@ -5,7 +5,12 @@ defmodule BankAPI.Accounts.Projections.Account do
 
   schema "accounts" do
     field :current_balance, :integer
+    field :status, :string
 
     timestamps()
+  end
+
+  def status do
+    %{open: "open", closed: "closed"}
   end
 end

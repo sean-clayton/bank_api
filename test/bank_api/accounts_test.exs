@@ -45,14 +45,14 @@ defmodule BankAPI.Accounts.AccountsTest do
              :error,
              :command_validation_failure,
              _cmd,
-             ["Argument must be bigger than zero"]
+             ["Argument must be bigger than 0"]
            } = Accounts.open_account(params2)
 
     assert {
              :error,
              :command_validation_failure,
              _cmd,
-             ["Argument must be bigger than zero"]
+             ["Argument must be bigger than 0"]
            } = Accounts.open_account(params3)
   end
 end

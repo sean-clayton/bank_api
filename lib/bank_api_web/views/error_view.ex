@@ -17,4 +17,12 @@ defmodule BankAPIWeb.ErrorView do
       }
     }
   end
+
+  def render("422.json", assigns) do
+    %{
+      errors: %{
+        message: assigns[:message] || "Unprocessable entity"
+      }
+    }
+  end
 end
