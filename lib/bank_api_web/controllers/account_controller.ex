@@ -44,4 +44,14 @@ defmodule BankAPIWeb.AccountController do
       |> render("show.json", account: account)
     end
   end
+
+  def transfer(conn, %{
+        "id" => account_id,
+        "transfer_amount" => amount,
+        "destination_account" => destination_account_id
+      }) do
+    with :ok <- Accounts.transfer(account_id, amount, destination_account_id) do
+      conn |> resp(201, "")
+    end
+  end
 end

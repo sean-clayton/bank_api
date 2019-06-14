@@ -37,6 +37,14 @@ defmodule BankAPIWeb.FallbackController do
     |> render(:"422")
   end
 
+  def call(conn, {:error, :transfer_to_same_account}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Source and destination accounts are the same")
+    |> render(:"422")
+  end
+
   def call(conn, {:validation_error, _changeset}) do
     conn
     |> put_status(:unprocessable_entity)

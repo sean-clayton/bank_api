@@ -2,6 +2,7 @@ defmodule BankAPI.Accounts.Supervisor do
   use Supervisor
 
   alias BankAPI.Accounts.Projectors
+  alias BankAPI.Accounts.ProcessManagers
 
   def start_link do
     Supervisor.start_link(__MODULE__, nil)
@@ -13,7 +14,8 @@ defmodule BankAPI.Accounts.Supervisor do
       worker(Projectors.AccountClosed, [], id: :account_closed),
       worker(Projectors.DepositsAndWithdrawals, [],
         id: :deposits_and_withdrawals
-      )
+      ),
+      worker(ProcessManagers.TransferMoney, [], id: :transfer_money)
     ]
 
     supervise(children, strategy: :one_for_one)

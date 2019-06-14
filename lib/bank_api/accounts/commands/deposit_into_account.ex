@@ -1,7 +1,7 @@
 defmodule BankAPI.Accounts.Commands.DepositIntoAccount do
   @enforce_keys [:account_uuid]
 
-  defstruct [:account_uuid, :deposit_amount]
+  defstruct [:account_uuid, :deposit_amount, :transfer_uuid]
 
   alias BankAPI.Accounts
   alias BankAPI.Accounts.Commands.Validators
